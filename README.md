@@ -7,7 +7,7 @@ The `esp-ipv6-tree` works for ESP8266, ESP32, ESP32S2 chip, more details see as 
 ├── [ipv6-addr](./ipv6-addr/README.md)  
 ├── ipv6-coap-client  
 ├── ipv6-coap-server  
-├── ipv6-dns  
+├── [ipv6-dns](./ipv6-dns/README.md)  
 ├── ipv6-http  
 ├── ipv6-https  
 ├── ipv6-mdns  
