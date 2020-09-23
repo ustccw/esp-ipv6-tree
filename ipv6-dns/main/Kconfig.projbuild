@@ -1,0 +1,50 @@
+menu "Example Connection Configuration"
+    config EXAMPLE_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the example to connect to.
+
+    config EXAMPLE_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the example to use.
+            Can be left blank if the network has no security set.
+
+    choice EXAMPLE_IPV6_ADDR_PREFER
+        prompt "Preferred IPv6 Address"
+        default EXAMPLE_IPV6_ADDR_PREF_GLOBAL
+        help
+            Select which kind of IPv6 address the connect logic waits for.
+
+        config EXAMPLE_IPV6_ADDR_PREF_LINKLOCAL
+            bool "Linklocal IPv6 Address"
+            help
+                Blocks until Local link address assigned.
+
+        config EXAMPLE_IPV6_ADDR_PREF_GLOBAL
+            bool "Global IPv6 Address"
+            select LWIP_IPV6_AUTOCONFIG
+            help
+                Blocks until Global address assigned.
+    endchoice
+
+    choice EXAMPLE_DNS_SERVER_PREFER
+        prompt "Preferred DNS Server"
+        default EXAMPLE_IPV6_DNS_SERVER
+        depends on EXAMPLE_IPV6_ADDR_PREF_GLOBAL
+        help
+            Select which kind of DNS server is used to resolve domain name.
+
+        config EXAMPLE_IPV6_DNS_SERVER
+            bool "IPv6 DNS server"
+            help
+                Use IPv6 DNS server to resolve domain name.
+
+        config EXAMPLE_AUTO_DNS_SERVER
+            bool "DNS server from AP"
+            help
+                Use DNS server from AP to resolve domain name.
+    endchoice
+endmenu
