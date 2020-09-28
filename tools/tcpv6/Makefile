@@ -1,5 +1,5 @@
 # Makefile
-TARGET = tcp6-server tcp6-client
+TARGET = tcpv6-server tcpv6-client
 
 all: $(TARGET)
 
