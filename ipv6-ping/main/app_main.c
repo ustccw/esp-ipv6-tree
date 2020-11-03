@@ -212,6 +212,7 @@ static void ping_test(void)
         esp_ping_config_t config = ESP_PING_DEFAULT_CONFIG();
         struct in6_addr addr6 = ((struct sockaddr_in6 *) (res->ai_addr))->sin6_addr;
         inet6_addr_to_ip6addr(ip_2_ip6(&target_addr), &addr6);
+        IP_SET_TYPE_VAL(target_addr, IPADDR_TYPE_V6);
         config.target_addr = target_addr;
         freeaddrinfo(res);
 
